@@ -7,6 +7,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 /* Pages */
 import MainPage from "./pages/MainPage/index.tsx";
+import Footer from "./layouts/Footer/index.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -18,5 +19,6 @@ const routes = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={routes} />
+    <Footer />
   </React.StrictMode>
 );
