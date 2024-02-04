@@ -1,5 +1,11 @@
+import MainBanner from "./components/MainBanner";
+import Tabs from "./components/Tabs";
+
 export default function MainPage() {
   return (
-    <div>MainPage</div>
+    <main>
+      <MainBanner />
+      <Tabs />
+    </main>
   )
 }
