@@ -1,4 +1,4 @@
-export default function Logotype() {
+export default function Logomark() {
   return (
     <svg
       version="1.2"

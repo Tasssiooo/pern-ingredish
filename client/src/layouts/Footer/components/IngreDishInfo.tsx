@@ -1,11 +1,11 @@
-import logo from "@/assets/Image 4.png";
+import logomark from "@/assets/Image 4.png";
 
 export default function IngreDishInfo() {
   const today = new Date().getFullYear();
   return (
     <ul className="flex flex-row flex-wrap items-end gap-x-4 text-sm">
       <li className="flex flex-row items-end space-x-2.5">
-        <img src={logo} alt="IgreDish logotype" />
+        <img src={logomark} alt="IgreDish logomark" />
         <h3>IngreDish</h3>
       </li>
       <li>

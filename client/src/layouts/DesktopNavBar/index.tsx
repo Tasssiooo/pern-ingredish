@@ -1,6 +1,6 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
-import Logomark from "./components/Logomark";
+import CombinationMark from "./components/CombinationMark";
 import Navigation from "./components/Navigation";
 import SearchInput from "./components/SearchInput";
 import MainPageBar from "./components/MainPageBar";
@@ -14,7 +14,7 @@ export default function DesktopNavBar() {
   return (
     <div className="hidden lg:flex flex-row justify-between items-center container h-20 border-b">
       <div className="flex flex-row space-x-2 items-center h-full">
-        <Logomark />
+        <CombinationMark />
         <SearchInput />
       </div>
       <div className="flex flex-row space-x-7 xl:space-x-4 items-center">

@@ -1,4 +1,4 @@
-export default function Logomark() {
+export default function CombinationMark() {
   return (
     <div className="flex flex-row items-center gap-x-3 min-w-max">
       <svg
