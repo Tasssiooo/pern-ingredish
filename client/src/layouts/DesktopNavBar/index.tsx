@@ -4,8 +4,10 @@ import CombinationMark from "./components/CombinationMark";
 import Navigation from "./components/Navigation";
 import SearchInput from "./components/SearchInput";
 import MainPageBar from "./components/MainPageBar";
+import SignInSignUp from "./components/SignInSignUp";
 
 export default function DesktopNavBar() {
+  const isLogged = false;
   const pathname = window.location.pathname;
 
   if (pathname === "/") {
@@ -19,10 +21,14 @@ export default function DesktopNavBar() {
       </div>
       <div className="flex flex-row space-x-7 xl:space-x-4 items-center">
         <Navigation />
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        {isLogged ? (
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        ) : (
+          <SignInSignUp />
+        )}
       </div>
     </div>
   );
