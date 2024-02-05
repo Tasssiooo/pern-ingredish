@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-
 import { cn } from "@/lib/utils";
 
-export default function SignInSignUp() {
+import SignUpModal from "./SignForm/SignUpModal";
+
+export default function SignButtons() {
   const pathname = window.location.pathname;
   const isMainPage = pathname === "/";
 
@@ -24,14 +25,16 @@ export default function SignInSignUp() {
       >
         Sign In
       </Button>
-      <Button
-        type="button"
-        size="sm"
-        variant={isMainPage ? "default" : "outline"}
-        className="rounded-full"
-      >
-        Sign Up
-      </Button>
+      <SignUpModal>
+        <Button
+          type="button"
+          size="sm"
+          variant={isMainPage ? "default" : "outline"}
+          className="rounded-full"
+        >
+          Sign Up
+        </Button>
+      </SignUpModal>
     </div>
   );
 }

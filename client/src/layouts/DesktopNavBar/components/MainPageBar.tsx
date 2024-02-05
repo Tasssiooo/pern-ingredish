@@ -3,7 +3,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import NavDrawer from "./MainPageBar/NavDrawer";
 import Navigation from "./MainPageBar/Navigation";
 import YourRecipes from "./MainPageBar/YourRecipes";
-import SignInSignUp from "./SignInSignUp";
+import SignInSignUp from "./SignButtons";
 
 export default function MainPageBar() {
   const isLogged = false;
@@ -12,7 +12,7 @@ export default function MainPageBar() {
       <div className="hidden sm:flex flex-row space-x-7 xl:space-x-4 items-center">
         <nav className="hidden sm:flex flex-row items-center space-x-7">
           <Navigation />
-          <YourRecipes />
+          {isLogged ? <YourRecipes /> : <></>}
         </nav>
         {isLogged ? (
           <Avatar>

@@ -4,7 +4,7 @@ import CombinationMark from "./components/CombinationMark";
 import Navigation from "./components/Navigation";
 import SearchInput from "./components/SearchInput";
 import MainPageBar from "./components/MainPageBar";
-import SignInSignUp from "./components/SignInSignUp";
+import SignButtons from "./components/SignButtons";
 
 export default function DesktopNavBar() {
   const isLogged = false;
@@ -27,7 +27,7 @@ export default function DesktopNavBar() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         ) : (
-          <SignInSignUp />
+          <SignButtons />
         )}
       </div>
     </div>
