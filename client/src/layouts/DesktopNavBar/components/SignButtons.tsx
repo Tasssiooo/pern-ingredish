@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import SignUpModal from "./SignForm/SignUpModal";
+import SignInModal from "./SignForm/SignInModal";
 
 export default function SignButtons() {
   const pathname = window.location.pathname;
@@ -14,17 +15,19 @@ export default function SignButtons() {
         isMainPage ? "bg-primary-foreground" : "bg-primary"
       )}
     >
-      <Button
-        type="button"
-        size="sm"
-        variant="ghost"
-        className={cn(
-          "hover:text-primary-foreground hover:bg-[#942a2a] rounded-full",
-          isMainPage ? "text-primary" : "text-primary-foreground"
-        )}
-      >
-        Sign In
-      </Button>
+      <SignInModal>
+        <Button
+          type="button"
+          size="sm"
+          variant="ghost"
+          className={cn(
+            "hover:text-primary-foreground hover:bg-[#942a2a] rounded-full",
+            isMainPage ? "text-primary" : "text-primary-foreground"
+          )}
+        >
+          Sign In
+        </Button>
+      </SignInModal>
       <SignUpModal>
         <Button
           type="button"
