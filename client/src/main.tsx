@@ -8,6 +8,10 @@ import Footer from "./layouts/Footer/index.tsx";
 import DesktopNavBar from "./layouts/DesktopNavBar/index.tsx";
 import MobileNavBar from "./layouts/MobileNavBar/index.tsx";
 
+/* Redux */
+import { Provider } from "react-redux";
+import { store } from "./redux/store.ts";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 /* Pages */
 import MainPage from "./pages/MainPage/index.tsx";
@@ -21,9 +25,11 @@ const routes = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <DesktopNavBar />
-    <MobileNavBar />
+    <Provider store={store}>
+      <DesktopNavBar />
+      <MobileNavBar />
       <RouterProvider router={routes} />
-    <Footer />
+      <Footer />
+    </Provider>
   </React.StrictMode>
 );

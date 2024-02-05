@@ -1,5 +1,17 @@
 import { z } from "zod";
 
+const signInSchema = z.object({
+  email: z
+    .string()
+    .email({ message: "It must be a valid email!" })
+    .min(11)
+    .max(50),
+  password: z
+    .string()
+    .min(1, "Password is required!")
+    .min(8, "Password must have more than 8 characters!"),
+});
+
 const signUpSchema = z
   .object({
     username: z.string().min(1, { message: "Username is required!" }).max(255),
@@ -29,16 +41,7 @@ const signUpSchema = z
     message: "Password do not match!",
   });
 
-const signInSchema = z.object({
-  email: z
-    .string()
-    .email({ message: "It must be a valid email!" })
-    .min(11)
-    .max(50),
-  password: z
-    .string()
-    .min(1, "Password is required!")
-    .min(8, "Password must have more than 8 characters!"),
-});
+export type SignInSchema = z.infer<typeof signInSchema>;
+export type SignUpSchema = z.infer<typeof signUpSchema>;
 
-export { signUpSchema, signInSchema };
+export { signInSchema, signUpSchema };

@@ -10,10 +10,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { signUpSchema } from "@/schemas";
+
+import { useAppDispatch } from "@/redux/hooks";
+
+import { signUp } from "@/redux/actions/authThunk";
 
 export default function SignUpForm() {
   const form = useForm<z.infer<typeof signUpSchema>>({
@@ -25,10 +29,12 @@ export default function SignUpForm() {
       confirmPassword: "",
     },
   });
-  async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+
+  const dispatch = useAppDispatch();
+  const pathname = window.location.pathname;
+
+  function onSubmit(values: z.infer<typeof signUpSchema>) {
+    dispatch(signUp(values, pathname));
   }
   return (
     <div className="w-full max-h-[35.5rem] p-14 overflow-y-auto space-y-4">
@@ -59,7 +65,11 @@ export default function SignUpForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="johndoe@email.com" {...field} />
+                  <Input
+                    type="email"
+                    placeholder="johndoe@email.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -91,7 +101,9 @@ export default function SignUpForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">Submit</Button>
+          <Button type="submit" className="w-full">
+            Submit
+          </Button>
         </form>
       </Form>
     </div>
