@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { UserData } from "@/types";
 
-export default function Navigation() {
+export default function Navigation({ user } : { user: UserData | null }) {
   const pathname = window.location.pathname;
-  const isLogged = false;
 
   return (
     <nav className="flex flex-row items-center space-x-7">
@@ -37,7 +37,7 @@ export default function Navigation() {
           </a>
         </li>
       </ul>
-      {isLogged ? (
+      {user ? (
         <Button type="button" className="hidden xl:inline-flex gap-x-2">
           <span>
             <svg

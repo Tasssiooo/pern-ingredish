@@ -1,18 +1,19 @@
+import { UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface AuthState {
-  authData: any;
+  authData: UserData | null;
 }
 
 const initialState: AuthState = {
-  authData: 0,
+  authData: null,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    auth: (state, action: PayloadAction<any>) => {
+    auth: (state, action: PayloadAction<UserData>) => {
       localStorage.setItem("profile", JSON.stringify({ ...action?.payload }));
 
       return {

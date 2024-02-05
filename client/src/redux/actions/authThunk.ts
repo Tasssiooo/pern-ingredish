@@ -1,27 +1,47 @@
-import type { SignInSchema, SignUpSchema } from "@/schemas";
 import * as api from "../../api/index";
 import { auth } from "../reducers/authSlice";
 
-export const signIn = (formData: SignInSchema, pathname: string) => async (dispatch: any) => {
-  try {
-    const { data } = await api.signIn(formData);
+import type { SignInSchema, SignUpSchema } from "@/schemas";
+import type { UserData } from "@/types";
 
-    dispatch(auth(data));
+export const signIn =
+  (formData: SignInSchema, pathname: string) => async (dispatch: any) => {
+    try {
+      const { data } = await api.signIn(formData);
+      const userData: UserData = {
+        result: {
+          user_id: data.result.user_id,
+          username: data.result.username,
+          email: data.result.email,
+        },
+        token: data.token,
+      };
 
-    window.location.pathname = pathname;
-  } catch (error) {
-    console.log(error);
-  }
-};
+      dispatch(auth(userData));
 
-export const signUp = (formData: SignUpSchema, pathname: string) => async (dispatch: any) => {
-  try {
-    const { data } = await api.signUp(formData);
+      window.location.pathname = pathname;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    dispatch(auth(data));
+export const signUp =
+  (formData: SignUpSchema, pathname: string) => async (dispatch: any) => {
+    try {
+      const { data } = await api.signUp(formData);
+      const userData: UserData = {
+        result: {
+          user_id: data.result.user_id,
+          username: data.result.username,
+          email: data.result.email,
+        },
+        token: data.token,
+      };
 
-    window.location.pathname = pathname;
-  } catch (error) {
-    console.log(error);
-  }
-};
+      dispatch(auth(userData));
+
+      window.location.pathname = pathname;
+    } catch (error) {
+      console.log(error);
+    }
+  };
